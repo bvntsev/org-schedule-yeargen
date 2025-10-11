@@ -9,7 +9,8 @@ day_names = dict({
 })
 
 # Your schedule, check README important
-org_schedule = [ 
+# This schedule is only an example
+org_schedule = [
     # DENOMINATOR
     [
         # MONDAY
