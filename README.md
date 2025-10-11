@@ -37,7 +37,10 @@ if you will be as soon make changes for yourself.
 **YEAR** in [0, 9999]  
 **PATH** any path.
 > Sudo if you need to do it in the root directory.  
-    
+
+### Result path format to your files:  
+- /your_path/2025/10_October/41W_10_11_Saturday_2025.org
+  
 ## Example org format day schedule
 ```org
 #+TITLE:2025-09-02 Tuesday
@@ -68,5 +71,3 @@ SCHEDULED: <2025-09-02 Tue 14:00>
 
 ```
 
-### Result path format to your files:  
-- /your_path/2025/10_October/41W_10_11_Saturday_2025.org
