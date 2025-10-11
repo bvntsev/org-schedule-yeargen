@@ -19,11 +19,10 @@ if you will be as soon make changes for yourself.
   
 ## Extra info
 
-Argument requirment:  
+### Argument requirment:
+Sudo if you need to do it in the root directory.  
 - python org-yeargen.py **[PATH]** **[YEAR]**  
 **YEAR** in [0, 9999]  
-**PATH** format: 
-- /your_path/2025/10_October/41W_10_11_Saturday_2025.org  
-- ~/2025/10_October/41W_10_11_Saturday_2025.org  
-- ../2025/10_October/41W_10_11_Saturday_2025.org  
-
+**PATH** any path.  
+### Result path format to your files:  
+- /your_path/2025/10_October/41W_10_11_Saturday_2025.org
