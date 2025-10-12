@@ -31,7 +31,7 @@ So i don't recommend using my code, but actually is good foundation
 if you will be as soon make changes for yourself.  
   
 ## Extra info
-
+The first week of the year begins with the ISO 8601 standard.  
 ### Argument requirment:
 - python org-yeargen.py **[PATH]** **[YEAR]**  
 **YEAR** in [0, 9999]  
@@ -39,7 +39,7 @@ if you will be as soon make changes for yourself.
 > Sudo if you need to do it in the root directory.  
 
 ### Result path format to your files:  
-- /your_path/2025/10_October/41W_10_11_Saturday_2025.org
+- /your_path/2025/10_October/41W_10_11_Saturday.org
   
 ## Example org format day schedule
 ```org
