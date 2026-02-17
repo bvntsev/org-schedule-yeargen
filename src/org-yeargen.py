@@ -3,6 +3,9 @@ import sys
 import os
 import calendar
 import schedule
+import logging
+
+import day_content
 
 NUMERATOR = 1
 DENOMINATOR = 0
@@ -18,33 +21,17 @@ day_names = dict({
 })
 
 
-def get_org_template(day: datetime.datetime, stage) -> str:
-    match stage:
-        case 1:
-            org_template = "#+TITLE:" \
-            + f'{day.strftime(f'%Y-%m-%d {day_names[day.isoweekday()]}')}\n'\
-            + f'#+DATE: {day.strftime("%Y-%m-%d")}\n' + "#+CATEGORY: daily\n\n"\
-            + "* Schedule\n"
-        case 2:
-            org_template = '''
-* Deadline [/]
-** ...\n
-* Tasks [/]
-** ...\n
-* Events [/]
-** ...\n
-* Notes
-** ...
-'''
-    return org_template
-
-
-def get_day_content(day: datetime.datetime, num_week) -> str:
-    org_content = get_org_template(day, 1)
-    org_content += schedule.get_org_schedule(day, num_week)
-    org_content += get_org_template(day, 2)
-
-    return org_content
+def print_help():
+    print(
+    '''
+    --help                  print help command
+    --output                path to folder
+    --force                 force create new files
+    --default               set default config
+    --set                   selecte day of the week
+    --time                  selecte time of the beginning classes
+    --teacher               selecte teacher 
+    ''')
 
 
 def ck_exist_path(path: str) -> bool:
@@ -55,15 +42,18 @@ def mkdir(path: str):
     try:
         os.mkdir(path)
     except FileExistsError:
-        print(f'LOG: path \"{path}\" already exist. Pass create argument')
+        logging.error(
+                f'LOG: path \"{path}\" already exist. Pass create argument'
+                )
     except FileNotFoundError:
         print(f'ERROR: Incorrect path to create dir ({path})')
         exit(-1)
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print("Incorrect argument.\'python org-yeargen.py {path_to_dir} {year}\'")
+    if len(sys.argv) == 1: 
+        logging.error(f'{sys.argv[0]} missing operator. See --help')
+        print_help()
         sys.exit(-1)
 
 
