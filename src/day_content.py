@@ -1,33 +1,25 @@
 import datetime
-import sys
-import os
-import calendar
 import schedule
 
-def get_org_template(day: datetime.datetime, stage) -> str:
-    match stage:
-        case 1:
-            org_template = "#+TITLE:" \
-            + f'{day.strftime(f'%Y-%m-%d {day_names[day.isoweekday()]}')}\n'\
-            + f'#+DATE: {day.strftime("%Y-%m-%d")}\n' + "#+CATEGORY: daily\n\n"\
-            + "* Schedule\n"
-        case 2:
-            org_template = '''
-* Deadline [/]
+day_names = dict({
+    1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday",
+    6: "Saturday", 7: "Sunday"
+})
+
+
+def get_org_template_from_date(day: datetime.datetime, date_format) -> str:
+    org_template = "#+TITLE:" \
+        + f'{day.strftime(str(day_names[day.isoweekday()]))}\n'\
+        + f'#+DATE: {day.strftime(date_format)}\n'\
+        + "#+CATEGORY: daily\n\n" + "* Schedule [0/0]\n** ... \n"
+    org_template += '''
+* Deadline [0/0]
 ** ...\n
-* Tasks [/]
+* Tasks [0/0]
 ** ...\n
-* Events [/]
+* Events [0/0]
 ** ...\n
 * Notes
 ** ...
 '''
     return org_template
-
-
-def get_day_content(day: datetime.datetime, num_week) -> str:
-    org_content = get_org_template(day, 1)
-    org_content += schedule.get_org_schedule(day, num_week)
-    org_content += get_org_template(day, 2)
-
-    return org_content
